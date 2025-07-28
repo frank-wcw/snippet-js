@@ -1,9 +1,30 @@
 import { expect, test } from 'vitest'
-import { autoIncrement } from "./index";
+import { autoIncrement, a_z, A_Z, A_z } from "./index";
+
+;(() => {
+  const RESULT = 'abcdefghijklmnopqrstuvwxyz'
+  test(`a_z equals ${RESULT}`, () => {
+    expect(a_z).toBe(RESULT)
+  })
+})()
+
+;(() => {
+  const RESULT = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  test(`A_Z equals ${RESULT}`, () => {
+    expect(A_Z).toBe(RESULT)
+  })
+})()
+
+;(() => {
+  const RESULT = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  test(`A_z equals ${RESULT}`, () => {
+    expect(A_z).toBe(RESULT)
+  })
+})()
 
 ;(() => {
   const N = 0
-  test(`autoIncrement ${N} sequence test`, () => {
+  test(`start ${N} sequence test`, () => {
     const ai = autoIncrement(N)
     expect(ai.value).toBe(N)
 
@@ -18,7 +39,7 @@ import { autoIncrement } from "./index";
 
 ;(() => {
   const N = 19
-  test(`autoIncrement ${N} sequence test`, () => {
+  test(`start ${N} sequence test`, () => {
     const ai = autoIncrement(N)
     expect(ai.value).toBe(N)
 
@@ -33,7 +54,7 @@ import { autoIncrement } from "./index";
 
 ;(() => {
   const WORDS = 'ab'
-  test(`autoIncrement "${WORDS}" sequence test`, () => {
+  test(`start "${WORDS}" sequence test`, () => {
     const ai = autoIncrement(WORDS)
     expect(ai.value).toBe(WORDS[0])
 
@@ -48,7 +69,7 @@ import { autoIncrement } from "./index";
 
 ;(() => {
   const WORDS = 'abc'
-  test(`autoIncrement "${WORDS}" sequence test`, () => {
+  test(`start "${WORDS}" sequence test`, () => {
     const ai = autoIncrement(WORDS)
     expect(ai.value).toBe(WORDS[0])
 
