@@ -1,4 +1,4 @@
-import { expect, test } from 'vitest'
+import { expect, expectTypeOf, test } from 'vitest'
 import { autoIncrement, a_z, A_Z, A_z } from "./index";
 
 ;(() => {
@@ -21,6 +21,16 @@ import { autoIncrement, a_z, A_Z, A_z } from "./index";
     expect(A_z).toBe(RESULT)
   })
 })()
+
+test('expect init 0 value type to be number', () => {
+  const ai = autoIncrement(0)
+  expectTypeOf(ai.value).toBeNumber()
+})
+
+test('expect init "a" value type to be string', () => {
+  const ai = autoIncrement('a')
+  expectTypeOf(ai.value).toBeString()
+})
 
 ;(() => {
   const N = 0
