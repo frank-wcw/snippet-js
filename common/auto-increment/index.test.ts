@@ -91,3 +91,54 @@ test('expect init "a" value type to be string', () => {
     }
   })
 })()
+
+;(() => {
+  const N = 0
+  const START_N = 19
+  test(`start ${N} set ${START_N} sequence test`, () => {
+    const ai = autoIncrement(N)
+    ai.set(START_N)
+
+    expect(ai.value).toBe(START_N)
+
+    const exceptedList = [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+
+    for (let i = 0; i < exceptedList.length; i++) {
+      expect(ai.next()).toBe(exceptedList[i])
+      expect(ai.value).toBe(exceptedList[i])
+    }
+  })
+})()
+
+;(() => {
+  const WORDS = 'ab'
+  const START_VALUE = 'aaba'
+  test(`start "${WORDS}" set "${START_VALUE}" sequence test`, () => {
+    const ai = autoIncrement(WORDS)
+    ai.set(START_VALUE)
+
+    expect(ai.value).toBe(START_VALUE)
+
+    const exceptedList = ['aabb', 'aabc', 'aaca', 'aacb', 'aacc', 'abaa', 'abab', 'abac', 'abba', 'abbb', 'abbc', 'abca', 'abcb', 'abcc', 'acaa', 'acab', 'acac', 'acba', 'acbb', 'acbc', 'acca', 'accb', 'accc', 'baaa', 'baab']
+
+    for (let i = 0; i < exceptedList.length; i++) {
+      expect(ai.next()).toBe(exceptedList[i])
+      expect(ai.value).toBe(exceptedList[i])
+    }
+  })
+})()
+
+// ;(() => {
+//   const WORDS = 'abc'
+//   test(`start "${WORDS}" sequence test`, () => {
+//     const ai = autoIncrement(WORDS)
+//     expect(ai.value).toBe(WORDS[0])
+//
+//     const exceptedList = ['b', 'c', 'aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc', 'aaa', 'aab', 'aac', 'aba', 'abb', 'abc', 'aca', 'acb', 'acc', 'baa', 'bab', 'bac', 'bba', 'bbb', 'bbc', 'bca', 'bcb', 'bcc', 'caa', 'cab', 'cac', 'cba', 'cbb', 'cbc', 'cca', 'ccb', 'ccc', 'aaaa', 'aaab', 'aaac', 'aaba', 'aabb', 'aabc', 'aaca', 'aacb', 'aacc', 'abaa', 'abab', 'abac', 'abba', 'abbb', 'abbc', 'abca', 'abcb', 'abcc', 'acaa', 'acab', 'acac', 'acba', 'acbb', 'acbc', 'acca', 'accb', 'accc', 'baaa', 'baab']
+//
+//     for (let i = 0; i < exceptedList.length; i++) {
+//       expect(ai.next()).toBe(exceptedList[i])
+//       expect(ai.value).toBe(exceptedList[i])
+//     }
+//   })
+// })()
