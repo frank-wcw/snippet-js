@@ -32,11 +32,13 @@ export function autoIncrement<T extends string | number>(n: T): AutoIncrementIns
       for (let i = 0; i < _value.length; i++) {
         const e = _value[i]
         const mi = n.indexOf(e)
-        if (mi === -1) idxes[i] = n.length - 1
+        if (mi === -1) {
+          n += e
+          idxes[i] = n.length - 1
+        }
         else idxes[i] = mi
       }
       idx = idxes.length - 1
-      console.log(idxes, idx)
       this.value = value
     },
     next() {

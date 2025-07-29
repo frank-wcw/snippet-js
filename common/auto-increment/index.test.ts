@@ -119,6 +119,24 @@ test('expect init "a" value type to be string', () => {
 
     expect(ai.value).toBe(START_VALUE)
 
+    const exceptedList = ['aabb', 'abaa', 'abab', 'abba', 'abbb', 'baaa', 'baab', 'baba', 'babb', 'bbaa', 'bbab', 'bbba', 'bbbb', 'aaaaa']
+
+    for (let i = 0; i < exceptedList.length; i++) {
+      expect(ai.next()).toBe(exceptedList[i])
+      expect(ai.value).toBe(exceptedList[i])
+    }
+  })
+})()
+
+;(() => {
+  const WORDS = 'abc'
+  const START_VALUE = 'aaba'
+  test(`start "${WORDS}" set "${START_VALUE}" sequence test`, () => {
+    const ai = autoIncrement(WORDS)
+    ai.set(START_VALUE)
+
+    expect(ai.value).toBe(START_VALUE)
+
     const exceptedList = ['aabb', 'aabc', 'aaca', 'aacb', 'aacc', 'abaa', 'abab', 'abac', 'abba', 'abbb', 'abbc', 'abca', 'abcb', 'abcc', 'acaa', 'acab', 'acac', 'acba', 'acbb', 'acbc', 'acca', 'accb', 'accc', 'baaa', 'baab']
 
     for (let i = 0; i < exceptedList.length; i++) {
@@ -128,17 +146,20 @@ test('expect init "a" value type to be string', () => {
   })
 })()
 
-// ;(() => {
-//   const WORDS = 'abc'
-//   test(`start "${WORDS}" sequence test`, () => {
-//     const ai = autoIncrement(WORDS)
-//     expect(ai.value).toBe(WORDS[0])
-//
-//     const exceptedList = ['b', 'c', 'aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc', 'aaa', 'aab', 'aac', 'aba', 'abb', 'abc', 'aca', 'acb', 'acc', 'baa', 'bab', 'bac', 'bba', 'bbb', 'bbc', 'bca', 'bcb', 'bcc', 'caa', 'cab', 'cac', 'cba', 'cbb', 'cbc', 'cca', 'ccb', 'ccc', 'aaaa', 'aaab', 'aaac', 'aaba', 'aabb', 'aabc', 'aaca', 'aacb', 'aacc', 'abaa', 'abab', 'abac', 'abba', 'abbb', 'abbc', 'abca', 'abcb', 'abcc', 'acaa', 'acab', 'acac', 'acba', 'acbb', 'acbc', 'acca', 'accb', 'accc', 'baaa', 'baab']
-//
-//     for (let i = 0; i < exceptedList.length; i++) {
-//       expect(ai.next()).toBe(exceptedList[i])
-//       expect(ai.value).toBe(exceptedList[i])
-//     }
-//   })
-// })()
+;(() => {
+  const WORDS = 'ab'
+  const START_VALUE = 'aca'
+  test(`start "${WORDS}" set not in words value "${START_VALUE}" sequence test`, () => {
+    const ai = autoIncrement(WORDS)
+    ai.set(START_VALUE)
+
+    expect(ai.value).toBe(START_VALUE)
+
+    const exceptedList = ['acb', 'acc', 'baa', 'bab', 'bac', 'bba', 'bbb', 'bbc', 'bca', 'bcb', 'bcc', 'caa', 'cab', 'cac', 'cba']
+
+    for (let i = 0; i < exceptedList.length; i++) {
+      expect(ai.next()).toBe(exceptedList[i])
+      expect(ai.value).toBe(exceptedList[i])
+    }
+  })
+})()
