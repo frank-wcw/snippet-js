@@ -20,6 +20,7 @@
   "homepage": "https://github.com/frank-wcw/snippet-js#readme",
   "devDependencies": {
     "@types/react": "^19.1.8",
+    "tsx": "^4.20.3",
     "vitest": "^3.2.4"
   },
   "dependencies": {
