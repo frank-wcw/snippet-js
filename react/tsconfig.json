@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // ESNext 支持最新語法（例如 ES6+）
+    "module": "ESNext", // 使用 ECMAScript 模塊
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // 包含支持瀏覽器 DOM 和最新 ES 版本的庫
+    "allowJs": true, // 允許引入 JS 文件
+    "jsx": "react-jsx", // 使用 React 17+ 的 JSX 轉換模式
+    "strict": true, // 開啟嚴格模式
+    "moduleResolution": "Node", // 使用 Node.js 模塊解析
+    "resolveJsonModule": true, // 支持引入 JSON 文件
+    "esModuleInterop": true, // 啟用 ES 模塊與 CommonJS 模塊之間的互操作性
+    "skipLibCheck": true, // 跳過類型庫檢查（加快構建速度）
+    "forceConsistentCasingInFileNames": true, // 文件名稱區分大小寫
+    "noImplicitReturns": true, // 所有分支都需返回值
+    "strictNullChecks": true, // 嚴格檢查 `null` 和 `undefined`
+    "baseUrl": "./", // 設置解析基址為當前項目目錄
+  },
+  "include": ["**/*.tsx", "**/*.ts"] // 僅包含該目錄下的 TS 文件
+}
